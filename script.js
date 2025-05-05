@@ -1,24 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Dynamic background effect
-    const updateBlobs = () => {
-        const blobs = document.querySelectorAll('.blob');
-        let angle = 0;
+    // Scroll animations
+    const animateOnScroll = () => {
+        const sections = document.querySelectorAll('.content-section');
         
-        setInterval(() => {
-            angle = (angle + 0.5) % 360;
-            blobs.forEach((blob, index) => {
-                const x = Math.sin(angle * Math.PI / 180 + index * 120) * 50;
-                const y = Math.cos(angle * Math.PI / 180 + index * 120) * 50;
-                blob.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        }, 50);
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (sectionTop < windowHeight * 0.85) {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }
+        });
     };
 
-    // Phone number protection
-    const phoneElements = document.querySelectorAll('[data-phone]');
-    phoneElements.forEach(element => {
-        element.textContent = element.textContent.replace(/(\d{3})(\d{4})(\d{3})/, '$1 $2 $3');
-    });
+    // Initialize scroll listener
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Initial check
 
-    updateBlobs();
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
 });
