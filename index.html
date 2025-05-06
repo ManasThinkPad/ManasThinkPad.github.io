@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manas Mulchandani</title>
+    <title>Manas Mulchandani | AI & Data Science Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -24,194 +24,208 @@
             --dark: #34495e;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        body {
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.6;
-            transition: var(--transition);
-        }
-
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: var(--primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Projects Section Enhancements */
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(0,0,0,0.1);
+        /* Enhanced Timeline */
+        .timeline {
             position: relative;
-            overflow: hidden;
+            padding: 50px 0;
         }
 
-        .project-card::before {
+        .timeline::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
+            left: 50%;
+            width: 2px;
             height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.2),
-                transparent
-            );
-            transition: 0.5s;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
-        }
-
-        .tech-tag {
             background: var(--primary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin: 0.3rem;
-            display: inline-block;
+        }
+
+        .timeline-item {
+            width: calc(50% - 40px);
+            margin: 20px 0;
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
             transition: var(--transition);
         }
 
-        .tech-tag:hover {
-            transform: scale(1.05);
+        .timeline-item:nth-child(odd) { float: left; clear: right; }
+        .timeline-item:nth-child(even) { float: right; clear: left; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 20px;
+            right: -30px;
         }
 
-        /* Animated Scroll Indicator */
-        .scroll-progress {
-            position: fixed;
+        .timeline-item:nth-child(even)::before { left: -30px; }
+
+        /* Skill Matrix */
+        .skill-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Project Gallery */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-overlay {
+            position: absolute;
             top: 0;
             left: 0;
-            height: 3px;
-            background: var(--primary);
-            z-index: 9999;
-            transition: width 0.3s ease;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: var(--transition);
         }
     </style>
 </head>
 <body>
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-    </div>
-
-    <!-- Updated Projects Section -->
-    <section class="section" id="projects">
-        <h2>Featured Projects</h2>
-        <div class="project-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <h3>Nurse Connect: Empowering Nursing Professionals with AI-Driven Support</h3>
-                <p>Nurse Connect is a comprehensive full-stack web application designed to enhance the daily operations of nursing professionals through the integration of an AI-powered chatbot. By leveraging advanced prompt engineering techniques, this platform offers intelligent, context-aware assistance, streamlining workflows and improving patient care quality.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Express</span>
-                    <span class="tech-tag">MongoDB</span>
-                    <span class="tech-tag">JWT</span>
-                </div>
-                <a href="https://github.com/ManasThinkPad/Nurse_Connect" class="project-link">
-                    <i class="fab fa-github"></i> View Repository
-                </a>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <h3>Supply Chain Optimisation Using Deep Learning</h3>
-                <p>This project leverages deep learning to enhance supply chain demand forecasting and inventory management. Using a Bidirectional LSTM model, it predicts future order quantities based on key supply chain parameters, helping businesses optimize logistics and reduce inefficiencies.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Redux</span>
-                    <span class="tech-tag">Firebase</span>
-                    <span class="tech-tag">Stripe API</span>
-                </div>
-                <a href="https://github.com/ManasThinkPad/Supply_Chain" class="project-link">
-                    <i class="fab fa-github"></i> View Repository
-                </a>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <h3>Sentiment Analysis For Amazon Reviews</h3>
-                <p>This project leverages Python to analyze sentiments in Amazon food reviews using two powerful techniques: 1️⃣ VADER (Valence Aware Dictionary and sEntiment Reasoner) for a bag-of-words approach, ideal for quick and interpretable sentiment scoring. 2️⃣ RoBERTa Pretrained Model via 🤗 Huggingface Pipeline for advanced deep learning-based sentiment classification. The notebook includes: ✔️ Comprehensive data preprocessing and cleaning using pandas and NLTK. ✔️ Exploratory Data Analysis (EDA) with Matplotlib and Seaborn to visualize trends. ✔️ Sentiment scoring for each review, including metrics like positive, negative, neutral, and compound scores. 🔍 The dataset is sourced from Kaggle's Amazon Fine Food Reviews, with over 500,000 reviews processed to uncover insights into customer sentiments.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">HTML5</span>
-                    <span class="tech-tag">CSS3</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">GSAP</span>
-                </div>
-                <a href="https://github.com/ManasThinkPad/Sentiment_Analysis_Amazon_Reviews" class="project-link">
-                    <i class="fab fa-github"></i> View Repository
-                </a>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card">
-                <h3>Customer Segmentation using Machine Learning</h3>
-                <p>This project focuses on customer segmentation using machine learning techniques to analyze customer behavior and classify them into distinct groups based on their purchasing patterns. Effective segmentation helps businesses optimize marketing strategies, improve customer experience, and boost revenue.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Next.js</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">MDX</span>
-                </div>
-                <a href="https://github.com/ManasThinkPad/Customer_Segmentation" class="project-link">
-                    <i class="fab fa-github"></i> View Repository
-                </a>
+    <!-- Education Section -->
+    <section class="section">
+        <h2>Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Thadomal Shahani Engineering College</h3>
+                <p>Bachelor of Technology in Artificial Intelligence and Data Science</p>
+                <p>2021-2025</p>
             </div>
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section class="section">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Student Marketeer @ Red Bull India</h3>
+                <p>2023-2024</p>
+                <ul>
+                    <li>Led engagement strategies for 5+ national events</li>
+                    <li>Increased campus product awareness by 75%</li>
+                    <li>Managed brand presence for 10+ events</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Software Development Intern @ CyberMax Solutions</h3>
+                <p>2023</p>
+                <ul>
+                    <li>Full-stack development with .NET/Java/PHP</li>
+                    <li>Optimized SQL queries by 40%</li>
+                    <li>Developed 5+ RESTful APIs</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section">
+        <h2>Technical Arsenal</h2>
+        <div class="skill-matrix">
+            <div class="skill-card">
+                <h4>Languages</h4>
+                <p>Python, JavaScript, MATLAB, C, SQL</p>
+            </div>
+            <div class="skill-card">
+                <h4>Frameworks</h4>
+                <p>TensorFlow, PyTorch, React, Node.js</p>
+            </div>
+            <div class="skill-card">
+                <h4>Tools</h4>
+                <p>AWS, Jira, AutoCAD, MySQL Workbench</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section">
+        <h2>Featured Projects</h2>
+        <div class="project-gallery">
+            <div class="project-card">
+                <h3>Nurse Connect</h3>
+                <div class="tech-stack">
+                    <span>React</span>
+                    <span>Node.js</span>
+                    <span>MongoDB</span>
+                </div>
+                <div class="project-overlay">
+                    <p>Full-stack web app with AI chatbot integration</p>
+                    <a href="https://github.com/ManasThinkPad/nurse-connect">View Project</a>
+                </div>
+            </div>
+            <!-- Add other projects similarly -->
+        </div>
+    </section>
+
     <script>
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
+        // Timeline Animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.5 });
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-theme');
-            const isDark = body.classList.contains('dark-theme');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        timelineItems.forEach(item => timelineObserver.observe(item));
+
+        // Project Card Hover Effect
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const x = e.pageX - card.offsetLeft;
+                const y = e.pageY - card.offsetTop;
+                card.style.transform = `perspective(1000px) rotateX(${y/10}deg) rotateY(${-x/10}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
         });
-
-        // Scroll Progress Indicator
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scrollProgress').style.width = scrolled + '%';
-        });
-
-        // Project Card Animation
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        // Theme Initialization
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        body.classList.toggle('dark-theme', savedTheme === 'dark');
-        themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     </script>
 </body>
 </html>
