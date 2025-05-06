@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manas Mulchandani | Portfolio</title>
+    <title>Manas Mulchandani</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Base Styles */
+        :root {
+            --primary: #2ecc71;
+            --secondary: #27ae60;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --background: #ffffff;
+            --text: #2c3e50;
+            --card-bg: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        [data-theme="dark"] {
+            --background: #1a1a1a;
+            --text: #ecf0f1;
+            --card-bg: #2c3e50;
+            --dark: #34495e;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,197 +31,187 @@
             font-family: 'Segoe UI', sans-serif;
         }
 
-        :root {
-            --primary: #2ecc71;
-            --secondary: #27ae60;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-        }
-
         body {
-            background: var(--light);
-            color: var(--dark);
+            background: var(--background);
+            color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden;
+            transition: var(--transition);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframe hoverShake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(3px); }
-            50% { transform: translateX(-3px); }
-            75% { transform: translateX(2px); }
-            100% { transform: translateX(0); }
-        }
-
-        /* Header Styles */
-        .hero {
-            min-height: 100vh;
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            padding: 2rem;
-            background: linear-gradient(45deg, var(--dark), var(--primary));
-            color: white;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Projects Section Enhancements */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
         }
 
-        .hero-content {
-            max-width: 800px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            transform: translateY(-50px);
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        /* Project Cards */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Skill Bars */
-        .skill-bar {
-            background: #ddd;
-            border-radius: 20px;
-            margin: 1rem 0;
-            height: 20px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--primary);
-            width: 0;
-            transition: width 1s ease-in-out;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            max-width: 600px;
-            margin: 2rem auto;
-        }
-
-        .form-input {
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border: 2px solid #ddd;
-            transition: border-color 0.3s ease;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.2),
+                transparent
+            );
+            transition: 0.5s;
         }
 
-        .form-input:focus {
-            border-color: var(--primary);
-            outline: none;
+        .project-card:hover::before {
+            left: 100%;
         }
 
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin: 2rem 0;
+        .tech-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.3rem;
+            display: inline-block;
+            transition: var(--transition);
         }
 
-        .social-link {
-            font-size: 1.5rem;
-            color: var(--dark);
-            transition: transform 0.3s ease;
+        .tech-tag:hover {
+            transform: scale(1.05);
         }
 
-        .social-link:hover {
-            color: var(--primary);
-            transform: scale(1.2);
+        /* Animated Scroll Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary);
+            z-index: 9999;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Manas Mulchandani</h1>
-            <p class="tagline">Full Stack Developer & Open Source Contributor</p>
-            <div class="social-links">
-                <a href="https://github.com/ManasThinkPad" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/manas2705" class="social-link">
-                    <i class="fab fa-linkedin"></i>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Updated Projects Section -->
+    <section class="section" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>Nurse Connect: Empowering Nursing Professionals with AI-Driven Support</h3>
+                <p>Nurse Connect is a comprehensive full-stack web application designed to enhance the daily operations of nursing professionals through the integration of an AI-powered chatbot. By leveraging advanced prompt engineering techniques, this platform offers intelligent, context-aware assistance, streamlining workflows and improving patient care quality.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">JWT</span>
+                </div>
+                <a href="https://github.com/ManasThinkPad/Nurse_Connect" class="project-link">
+                    <i class="fab fa-github"></i> View Repository
                 </a>
             </div>
-        </div>
-    </section>
 
-    <section id="projects">
-        <div class="project-grid">
-            <!-- Add your GitHub projects here -->
+            <!-- Project 2 -->
             <div class="project-card">
-                <h3>Project Title 1</h3>
-                <p>Project description from GitHub</p>
+                <h3>Supply Chain Optimisation Using Deep Learning</h3>
+                <p>This project leverages deep learning to enhance supply chain demand forecasting and inventory management. Using a Bidirectional LSTM model, it predicts future order quantities based on key supply chain parameters, helping businesses optimize logistics and reduce inefficiencies.</p>
                 <div class="tech-stack">
                     <span class="tech-tag">React</span>
-                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Redux</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Stripe API</span>
                 </div>
+                <a href="https://github.com/ManasThinkPad/Supply_Chain" class="project-link">
+                    <i class="fab fa-github"></i> View Repository
+                </a>
             </div>
-        </div>
-    </section>
 
-    <section id="skills">
-        <!-- Add skills from LinkedIn -->
-        <div class="skill">
-            <div class="skill-info">
-                <span>JavaScript</span>
-                <span>90%</span>
+            <!-- Project 3 -->
+            <div class="project-card">
+                <h3>Sentiment Analysis For Amazon Reviews</h3>
+                <p>This project leverages Python to analyze sentiments in Amazon food reviews using two powerful techniques: 1️⃣ VADER (Valence Aware Dictionary and sEntiment Reasoner) for a bag-of-words approach, ideal for quick and interpretable sentiment scoring. 2️⃣ RoBERTa Pretrained Model via 🤗 Huggingface Pipeline for advanced deep learning-based sentiment classification. The notebook includes: ✔️ Comprehensive data preprocessing and cleaning using pandas and NLTK. ✔️ Exploratory Data Analysis (EDA) with Matplotlib and Seaborn to visualize trends. ✔️ Sentiment scoring for each review, including metrics like positive, negative, neutral, and compound scores. 🔍 The dataset is sourced from Kaggle's Amazon Fine Food Reviews, with over 500,000 reviews processed to uncover insights into customer sentiments.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">GSAP</span>
+                </div>
+                <a href="https://github.com/ManasThinkPad/Sentiment_Analysis_Amazon_Reviews" class="project-link">
+                    <i class="fab fa-github"></i> View Repository
+                </a>
             </div>
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 90%"></div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <h3>Customer Segmentation using Machine Learning</h3>
+                <p>This project focuses on customer segmentation using machine learning techniques to analyze customer behavior and classify them into distinct groups based on their purchasing patterns. Effective segmentation helps businesses optimize marketing strategies, improve customer experience, and boost revenue.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">MDX</span>
+                </div>
+                <a href="https://github.com/ManasThinkPad/Customer_Segmentation" class="project-link">
+                    <i class="fab fa-github"></i> View Repository
+                </a>
             </div>
         </div>
     </section>
 
     <script>
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
 
-        document.querySelectorAll('.project-card, .skill').forEach((el) => {
-            observer.observe(el);
+        // Scroll Progress Indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
         });
 
-        // Form handling
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your form submission logic
+        // Project Card Animation
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
         });
+
+        // Theme Initialization
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.classList.toggle('dark-theme', savedTheme === 'dark');
+        themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     </script>
 </body>
 </html>
