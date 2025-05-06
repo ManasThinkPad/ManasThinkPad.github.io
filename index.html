@@ -3,77 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manas Mulchandani — AI & Data Science</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <title>Manas Mulchandani | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary: #2ecc71;
+            --secondary: #27ae60;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframe hoverShake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(3px); }
+            50% { transform: translateX(-3px); }
+            75% { transform: translateX(2px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Header Styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, var(--dark), var(--primary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Skill Bars */
+        .skill-bar {
+            background: #ddd;
+            border-radius: 20px;
+            margin: 1rem 0;
+            height: 20px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--primary);
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 2px solid #ddd;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            font-size: 1.5rem;
+            color: var(--dark);
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+    </style>
 </head>
 <body>
-    <nav class="main-nav">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <main class="container">
-        <header class="hero">
-            <h1 class="title">Manas Mulchandani</h1>
-            <p class="subtitle">Third Year AI & Data Science Student</p>
-        </header>
-
-        <section class="content-section" id="about">
-            <h2 class="section-title">About</h2>
-            <p class="section-text">
-                Exploring the intersection of artificial intelligence and data systems, 
-                currently pursuing my Bachelor's degree in AI & Data Science. 
-                Passionate about developing intelligent solutions through 
-                machine learning and data analysis.
-            </p>
-        </section>
-
-        <section class="content-section" id="work">
-            <h2 class="section-title">Technical Expertise</h2>
-            <div class="grid-container">
-                <article class="skill-card">
-                    <h3>Machine Learning</h3>
-                    <p>Developing predictive models using Python and TensorFlow</p>
-                </article>
-                <article class="skill-card">
-                    <h3>Data Analysis</h3>
-                    <p>SQL & Python-based data processing and visualization</p>
-                </article>
-                <article class="skill-card">
-                    <h3>Web Development</h3>
-                    <p>Building full-stack applications with modern frameworks</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="content-section" id="contact">
-            <h2 class="section-title">Connect</h2>
-            <div class="contact-links">
-                <a href="https://linkedin.com/in/manas2705" class="contact-link">
-                    <span class="link-label">LinkedIn</span>
-                    <span class="link-arrow">→</span>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Manas Mulchandani</h1>
+            <p class="tagline">Full Stack Developer & Open Source Contributor</p>
+            <div class="social-links">
+                <a href="https://github.com/ManasThinkPad" class="social-link">
+                    <i class="fab fa-github"></i>
                 </a>
-                <a href="https://github.com/ManasThinkPad" class="contact-link">
-                    <span class="link-label">GitHub</span>
-                    <span class="link-arrow">→</span>
-                </a>
-                <a href="mailto:contact@manasm.com" class="contact-link">
-                    <span class="link-label">Email</span>
-                    <span class="link-arrow">→</span>
+                <a href="https://linkedin.com/in/manas2705" class="social-link">
+                    <i class="fab fa-linkedin"></i>
                 </a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer class="main-footer">
-        <p>© 2024 Manas Mulchandani</p>
-    </footer>
+    <section id="projects">
+        <div class="project-grid">
+            <!-- Add your GitHub projects here -->
+            <div class="project-card">
+                <h3>Project Title 1</h3>
+                <p>Project description from GitHub</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <section id="skills">
+        <!-- Add skills from LinkedIn -->
+        <div class="skill">
+            <div class="skill-info">
+                <span>JavaScript</span>
+                <span>90%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.project-card, .skill').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Form handling
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your form submission logic
+        });
+    </script>
 </body>
 </html>
