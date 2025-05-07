@@ -1,231 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manas Mulchandani | AI & Data Science Engineer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2ecc71;
-            --secondary: #27ae60;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --background: #ffffff;
-            --text: #2c3e50;
-            --card-bg: #ffffff;
-            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        [data-theme="dark"] {
-            --background: #1a1a1a;
-            --text: #ecf0f1;
-            --card-bg: #2c3e50;
-            --dark: #34495e;
-        }
-
-        /* Enhanced Timeline */
-        .timeline {
-            position: relative;
-            padding: 50px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background: var(--primary);
-        }
-
-        .timeline-item {
-            width: calc(50% - 40px);
-            margin: 20px 0;
-            position: relative;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .timeline-item:nth-child(odd) { float: left; clear: right; }
-        .timeline-item:nth-child(even) { float: right; clear: left; }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            top: 20px;
-            right: -30px;
-        }
-
-        .timeline-item:nth-child(even)::before { left: -30px; }
-
-        /* Skill Matrix */
-        .skill-matrix {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            padding: 2rem;
-        }
-
-        .skill-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        /* Project Gallery */
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 1.5rem;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manas Mulchandani</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      font-family: 'Helvetica Neue', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #333;
+    }
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 10px 0 40px;
+    }
+    .social-icons {
+      display: flex;
+      gap: 20px;
+    }
+    .social-icons a {
+      color: #333;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #0073b1; /* LinkedIn Blue as default hover color */
+    }
+    /* Specific hover colors */
+    .social-icons a.linkedin:hover { color: #0073b1; }
+    .social-icons a.instagram:hover { color: #e4405f; }
+    .social-icons a.github:hover { color: #333; }
+    .social-icons a.email:hover { color: #d44638; }
+  </style>
 </head>
 <body>
-    <!-- Education Section -->
-    <section class="section">
-        <h2>Education</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Thadomal Shahani Engineering College</h3>
-                <p>Bachelor of Technology in Artificial Intelligence and Data Science</p>
-                <p>2021-2025</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="section">
-        <h2>Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Student Marketeer @ Red Bull India</h3>
-                <p>2023-2024</p>
-                <ul>
-                    <li>Led engagement strategies for 5+ national events</li>
-                    <li>Increased campus product awareness by 75%</li>
-                    <li>Managed brand presence for 10+ events</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h3>Software Development Intern @ CyberMax Solutions</h3>
-                <p>2023</p>
-                <ul>
-                    <li>Full-stack development with .NET/Java/PHP</li>
-                    <li>Optimized SQL queries by 40%</li>
-                    <li>Developed 5+ RESTful APIs</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section">
-        <h2>Technical Arsenal</h2>
-        <div class="skill-matrix">
-            <div class="skill-card">
-                <h4>Languages</h4>
-                <p>Python, JavaScript, MATLAB, C, SQL</p>
-            </div>
-            <div class="skill-card">
-                <h4>Frameworks</h4>
-                <p>TensorFlow, PyTorch, React, Node.js</p>
-            </div>
-            <div class="skill-card">
-                <h4>Tools</h4>
-                <p>AWS, Jira, AutoCAD, MySQL Workbench</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section">
-        <h2>Featured Projects</h2>
-        <div class="project-gallery">
-            <div class="project-card">
-                <h3>Nurse Connect</h3>
-                <div class="tech-stack">
-                    <span>React</span>
-                    <span>Node.js</span>
-                    <span>MongoDB</span>
-                </div>
-                <div class="project-overlay">
-                    <p>Full-stack web app with AI chatbot integration</p>
-                    <a href="https://github.com/ManasThinkPad/nurse-connect">View Project</a>
-                </div>
-            </div>
-            <!-- Add other projects similarly -->
-        </div>
-    </section>
-
-    <script>
-        // Timeline Animation
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.5 });
-
-        timelineItems.forEach(item => timelineObserver.observe(item));
-
-        // Project Card Hover Effect
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const x = e.pageX - card.offsetLeft;
-                const y = e.pageY - card.offsetTop;
-                card.style.transform = `perspective(1000px) rotateX(${y/10}deg) rotateY(${-x/10}deg)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-            });
-        });
-    </script>
+  <h1>Manas Mulchandani</h1>
+  <p>Artificial Intelligence and Data Science Student</p>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/manas2705" class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/manas_.11" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:manasmulchandani9@gmail.com" class="email"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/ManasThinkPad" class="github" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
 </body>
 </html>
+
